@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Job",
+    "slug": "counter-app-rn",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "icon": "./assets/images/icon.png",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.dzedok.counter",
+      "versionCode": 3,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#0b1220"
+      }
+    },
+    "web": {},
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "2"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e75a6a35-37ca-405a-a60f-d3dc0499613d"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e75a6a35-37ca-405a-a60f-d3dc0499613d"
+    }
+  }
+}
