@@ -1,6 +1,6 @@
 // App.js
 import DateTimePicker from '@react-native-community/datetimepicker';
-import * as FileSystem from 'expo-file-system';
+import { documentDirectory, writeAsStringAsync, EncodingType } from 'expo-file-system';
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
@@ -773,9 +773,13 @@ function PayrollView({ sites, entries, profiles: allProfiles, refresh }) {
       Alert.alert(t('common.ready'), filename);
       return;
     }
-    const path = FileSystem.documentDirectory + filename;
+    if (!documentDirectory) {
+      Alert.alert(t('common.error'), 'Недоступна директория документов');
+      return;
+    }
+    const path = documentDirectory + filename;
     const html = `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>${rows.map(r=>r.join('\t')).join('\n')}</body></html>`;
-    await FileSystem.writeAsStringAsync(path, html, { encoding: FileSystem.EncodingType.UTF8 });
+    await writeAsStringAsync(path, html, { encoding: EncodingType.UTF8 });
     if (await Sharing.isAvailableAsync()) await Sharing.shareAsync(path);
     else Alert.alert(t('common.ready'), `Excel: ${path}`);
   }
